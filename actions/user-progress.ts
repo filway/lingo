@@ -50,4 +50,6 @@ export const upsertUserProgress = async (courseId: number) => {
     userName: user.firstName || 'User',
     userImageSrc: user.imageUrl || '/mascot.svg',
   })
+
+  redirect('/learn')
 }
