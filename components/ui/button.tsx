@@ -9,6 +9,8 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
+        locked:
+          'bg-neutral-200 text-primary-foreground hover:bg-neutral-200/90 border-neutral-400 border-b-4 active:border-b-0',
         default:
           'bg-white text-black border-slate-200 border-2 border-b-4 active:border-b-2 hover:bg-slate-100 text-slate-500',
         primary:
@@ -23,7 +25,8 @@ const buttonVariants = cva(
         super:
           'bg-indigo-500 text-primary-foreground hover:bg-indigo-500/90 border-indigo-600 border-b-4 active:border-b-0',
         superOutline: 'bg-white text-indigo-500 hover:bg-slate-100',
-        ghost: 'bg-transparent text-slate-500 border-transparent border-0 hover:bg-slate-100',
+        ghost:
+          'bg-transparent text-slate-500 border-transparent border-0 hover:bg-slate-100',
         sidebar:
           'border-transparent text-slate-500 border-2 border-transparent hover:bg-slate-100 transition-none',
         sidebarOutline:
@@ -54,7 +57,11 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : 'button'
     return (
-      <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />
+      <Comp
+        className={cn(buttonVariants({ variant, size, className }))}
+        ref={ref}
+        {...props}
+      />
     )
   }
 )
