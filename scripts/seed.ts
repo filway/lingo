@@ -158,18 +158,21 @@ const main = async () => {
     await db.insert(schema.challengeOptions).values([
       {
         challengeId: 3,
+        imageSrc: '/man.svg',
         text: 'el hombre',
         correct: false,
         audioSrc: '/es_man.mp3',
       },
       {
         challengeId: 3,
+        imageSrc: '/woman.svg',
         text: 'la mujer',
         correct: false,
         audioSrc: '/es_woman.mp3',
       },
       {
         challengeId: 3,
+        imageSrc: '/robot.svg',
         text: 'el robot',
         correct: true,
         audioSrc: '/es_robot.mp3',
