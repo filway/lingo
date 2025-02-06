@@ -13,6 +13,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@clerk/localizations": "^3.10.4",
     "@clerk/nextjs": "^5.0.12",
     "@radix-ui/react-dialog": "^1.1.5",
     "@radix-ui/react-progress": "^1.1.1",
