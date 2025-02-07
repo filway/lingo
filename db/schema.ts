@@ -7,6 +7,7 @@ import {
   bigint,
   mysqlEnum,
   boolean,
+  timestamp,
 } from 'drizzle-orm/mysql-core'
 
 export const courses = mysqlTable('courses', {
@@ -163,3 +164,16 @@ export const userProgressRelations = relations(userProgress, ({ one }) => ({
     references: [courses.id],
   }),
 }))
+
+export const userSubscription = mysqlTable('user_subscription', {
+  id: serial('id').primaryKey(),
+  userId: varchar('user_id', { length: 255 }).notNull().unique(),
+  stripeCustomerId: varchar('stripe_customer_id', { length: 255 })
+    .notNull()
+    .unique(),
+  stripeSubscriptionId: varchar('stripe_subscription_id', { length: 255 })
+    .notNull()
+    .unique(),
+  stripePriceId: varchar('stripe_price_id', { length: 255 }).notNull(),
+  stripeCurrentPeriodEnd: timestamp('stripe_current_period_end').notNull(),
+})

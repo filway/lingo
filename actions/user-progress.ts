@@ -3,13 +3,11 @@
 import { db } from '@/db/drizzle'
 import { getCourseById, getUserProgress } from '@/db/queries'
 import { challengeProgress, challenges, userProgress } from '@/db/schema'
+import { POINTS_TO_REFILL } from '@/lib/constants'
 import { auth, currentUser } from '@clerk/nextjs/server'
 import { and, eq } from 'drizzle-orm'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
-
-// TODO: move to constants file
-import { POINTS_TO_REFILL } from '@/app/(main)/shop/items'
 
 export const upsertUserProgress = async (courseId: number) => {
   const { userId } = await auth()
@@ -118,12 +116,6 @@ export const reduceHearts = async (challengeId: number) => {
 }
 
 export const refillHearts = async () => {
-  const { userId } = await auth()
-
-  if (!userId) {
-    throw new Error('Unauthorized')
-  }
-
   const currentUserProgress = await getUserProgress()
 
   if (!currentUserProgress) {
